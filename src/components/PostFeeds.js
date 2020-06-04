@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchNext5Posts } from "../feed/actions";
 import { selectFeedPosts } from "../feed/selectFeedPosts";
 import { selectFeedLoading } from "../feed/selectFeedLoading";
+import { Link } from "react-router-dom";
 
 export default function PostsFeed() {
   const posts = useSelector(selectFeedPosts);
@@ -22,8 +23,12 @@ export default function PostsFeed() {
       {posts.map((post, i) => {
         return (
           <p key={i}>
-            <strong>{post.title}</strong>{" "}
-            {moment(post.createdAt).format("DD-MM-YYYY")}{" "}
+            <Link to={`/post/${post.id}`}>
+              {" "}
+              <strong>{post.title}</strong>
+            </Link>
+
+            {moment(post.createdAt).format("DD-MM-YYYY")}
             {post.tags.map((tag, i) => (
               <button key={i}>{tag.tag}</button>
             ))}
