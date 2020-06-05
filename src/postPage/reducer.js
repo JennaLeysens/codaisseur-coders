@@ -9,6 +9,17 @@ export default function postPageSliceReducer(
   { type, payload }
 ) {
   switch (type) {
+    case "loading":
+      return { ...state, loading: true };
+    case "SHOW_POSTS": {
+      console.log("payload", payload);
+      return {
+        ...state,
+        post: { ...payload.post },
+        comments: [...payload.comments.rows],
+        loading: false,
+      };
+    }
     default: {
       return state;
     }

@@ -13,7 +13,6 @@ export default function feedSliceReducer(
     }
     case "loading":
       return { ...state, loading: payload };
-
     default: {
       return state;
     }
