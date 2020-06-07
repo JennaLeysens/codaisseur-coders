@@ -1,5 +1,5 @@
 const initialState = {
-  me: null, // the logged-in user
+  me: null,
   accessToken: null,
 };
 
@@ -8,6 +8,20 @@ export default function loginPageReducer(
   { type, payload }
 ) {
   switch (type) {
+    case "SAVE_PROFILE": {
+      return {
+        ...state,
+        me: { ...payload.profile },
+        accessToken: payload.token,
+      };
+    }
+    case "auth/logout": {
+      return {
+        ...state,
+        me: null,
+        accessToken: null,
+      };
+    }
     default: {
       return state;
     }

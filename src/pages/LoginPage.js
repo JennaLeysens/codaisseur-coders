@@ -10,7 +10,6 @@ export default function LoginPage() {
   function handleSubmit(event) {
     event.preventDefault();
 
-    // TODO
     console.log("TODO login with:", email, password);
     dispatch(login(email, password));
   }
